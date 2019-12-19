@@ -16,7 +16,7 @@ body {
   font-size: $body-font-sz;
   color: $body-color;
   // background-color: #000;
-  cursor: url(../imgs/mouse1.cur), url(../imgs/mouse1.cur), auto;
+  /*cursor: url(../imgs/mouse1.cur), url(../imgs/mouse1.cur), auto;*/
   word-wrap: break-word;
   // TODO 待修改body样式(目前要测其他组件样式)
   background:  0% 0% / cover no-repeat fixed rgb(0, 0, 0);
@@ -42,7 +42,7 @@ body {
 }
 
 a {
-  cursor: url(../imgs/mouse2.cur), url(../imgs/mouse2.cur), auto;
+  /*cursor: url(../imgs/mouse2.cur), url(../imgs/mouse2.cur), auto;*/
   color: $link-color;
   text-decoration: none;
   &:hover {
@@ -116,12 +116,9 @@ ul {
 }
 
 .panel {
-  border-radius: 4px;
-  background-color: $sidebar-panel-bg-color;
-  @include gal-box-shadow($sidebar-panel-box-shadow);
-  border: none;
+  @include block-item();
   &:hover {
-    @include gal-box-shadow($sidebar-panel-hover-box-shadow);
+    @include highlight-item();
   }
 }
 
@@ -131,19 +128,19 @@ ul {
 
 .panel-heading {
   font-size: 14px;
-  line-height: 14px;
+  line-height: 20px;
   font-weight: normal;
   border-bottom: none;
 }
 
 .list-group-item {
-  background-color: $list-group-item-bg-color;
+  background-color: transparent;
+  border: none;
   transition: background-color .5s ease-in-out,box-shadow .5s ease-in-out;
   -moz-transition: background-color .5s ease-in-out,box-shadow .5s ease-in-out;
   -webkit-transition: background-color .5s ease-in-out,box-shadow .5s ease-in-out;
   &:hover {
-    background-color: $list-group-item-hover-bg-color;
-    @include gal-box-shadow($list-group-item-hover-box-shadow);
+    background-color: $list-item-hl-bg;
   }
 }
 
@@ -161,23 +158,22 @@ ul {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
+  @include icon-box();
 }
 
 .label-gal {
-  background-color: $tag-bg-color;
-  margin-right: 5px;
-  font-size: 90%;
   > a {
     color: #fff;
+    text-decoration: none;
   }
   &:hover {
-    background-color: $link-hover-bg-color;
     @include gal-transition($duration:0.3s);
     > a {
       text-decoration: none;
     }
+  }
+  &:not(last-child) {
+    margin-right: 0.5em;
   }
 }
 
@@ -188,16 +184,40 @@ ul {
   border-radius: 4px;
   overflow: auto;
   color: $alert-color;
-  background-color: $alert-bg-color;
+  background-color: transparent;
+}
+
+.alert-info {
+  background: $info-color;
+  border: $item-border;
+  opacity: 1;
+}
+
+.read-more {
+  @include block-item();
+  &:hover {
+    @include highlight-item();
+    border: $item-border;
+  }
+}
+
+.navbar-brand-text, .navbar-inverse .navbar-brand-text {
+    height: 54px;
+    line-height: 32px;
+    font-size: 24px;
+    opacity: 1;
+    color: #eee;
+    background-color: rgba(0,0,0,0);
+    text-shadow: 0 0 15px #fff,0 0 15px #fff,0 0 15px #fff;
 }
 
 .close {
   font-size: 14px;
   font-weight: bold;
-  color: $black2;
+  color: #c6c6c6;
   opacity: 1;
   &:hover, &:focus {
-    color: $link-color;
+    color: #c6c6c6;
     text-decoration: none;
     cursor: pointer;
     @include gal-transition($duration: .25s);
@@ -227,12 +247,9 @@ button.close {
 
 // issue 公告
 #gal-issue {
-  background-color: $issue-bg-color;
-  @include gal-box-shadow($box-shadow);
-  @include gal-transition($property:background-color, $duration:0.3s, $timing-function:ease);
+  @include block-item();
   &:hover {
-    background-color: $issue-hover-bg-color;
-    @include gal-box-shadow($hover-box-shadow);
+    @include highlight-item();
   }
 }
 
@@ -317,18 +334,17 @@ button.close {
   right: 20px;
   height: 40px;
   width: 40px;
-  background-color: $goTop-bg-color;
   top: auto;
   display: none;
   z-index: 999;
   color: white;
+  @include block-item();
   border-radius: 50%;
-  border: 2px solid #fff;
   border-image: initial;
-  cursor: url(../imgs/mouse2.cur), url(../imgs/mouse2.cur), auto;
+  /*cursor: url(../imgs/mouse2.cur), url(../imgs/mouse2.cur), auto;*/
   &:hover {
-    color: $goTop-hover-color;
-    border-color: $goTop-hover-bd-color;
+    @include highlight-item();
+    cursor: pointer;
     transition: all 0.3s ease;
   }
   > i {
@@ -368,10 +384,8 @@ button.close {
   margin-right: auto;
   text-align: center;
   @include gal-transition($property: transform, $duration: .2s, $timing-function: ease-out);
-  @include gal-transform(scale(1) rotate(0deg));
-  z-index: 999;
+  z-index: 40;
   &:hover {
-    @include gal-transform(scale(1.5) rotate(1deg));
   }
 }
 
@@ -458,8 +472,6 @@ button.close {
 // markdown
 
 .content-article {
-
-  text-align: justify;
 
   blockquote {
     border-color: rgb(0, 191, 255);

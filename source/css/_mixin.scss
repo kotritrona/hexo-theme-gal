@@ -26,3 +26,51 @@
   -webkit-backface-visibility: $param;
   -moz-backface-visibility: $param;
 }
+
+
+@mixin transition-bg() {
+  transition-property: background-color,color,box-shadow;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+}
+
+@mixin block-item() {
+  background-color: $item-bg;
+  color: $item-c;
+  border: $item-border;
+  border-radius: 5px;
+  box-shadow: 0.2em 0.2em 0.3em 0 $item-shadow;
+  @include transition-bg();
+}
+
+@mixin highlight-item() {
+  background-color: $item-hl-bg;
+  color: $item-hl-c;
+  box-shadow: 0 0 1em 0 $item-hl-shadow;
+  @include transition-bg();
+}
+
+@mixin icon-box() {
+  background: $icon-box-c;
+  font-size: $icon-box-fs;
+  font-weight: 600;
+  padding: 2px 8px 2px 8px;
+  border: $item-border;
+  border-radius: 10px;
+}
+
+@keyframes input-glow {
+  from {
+    border-color: #393;
+    box-shadow: 0 0 5px rgba(0,255,0,0.2), inset 0 0 5px rgba(0,255,0,0.1), 0 2px 0 #000;
+  }
+  to {
+    border-color: #6f6;
+    box-shadow: 0 0 20px rgba(0,255,0,0.6), inset 0 0 10px rgba(0,255,0,0.4), 0 2px 0 #000;
+  }
+}
+
+@mixin input-breathe() {
+  animation: input-glow 800ms ease-out infinite alternate;
+  outline: none;
+}

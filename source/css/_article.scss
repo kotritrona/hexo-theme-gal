@@ -10,10 +10,9 @@
   }
 
   &.article-body {
-    background-color: $article-bg-color;
-    @include gal-box-shadow($article-box-shadow);
+    @include block-item();
     &:hover {
-      @include gal-box-shadow($hover-box-shadow);
+      @include highlight-item();
     }
   }
 
@@ -26,8 +25,9 @@
       > a {
         color: $black2;
         text-decoration: none;
+        color: #fff;
+        text-shadow: 0 0 0.2em $white, 0 0 0.2em $white;
         &:hover {
-          color: $red;
           text-decoration: none;
           @include gal-transition($duration: .3s, $timing-function: ease);
         }
@@ -48,7 +48,7 @@
       width: auto;
     }
     .alert-info {
-      opacity: .7;
+      opacity: 1;
     }
   }
 }

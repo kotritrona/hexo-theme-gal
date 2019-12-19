@@ -25,7 +25,7 @@
 }
 
 .panel-gal > .panel-heading {
-  color: #fff;
+  color: $panel-heading-color;
   background-color: $sidebar-panel-head-bg-color;
   border-color: #000;
 }
@@ -42,6 +42,7 @@
 
 .panel-gal a {
   color: $sidebar-panel-link-color;
+  font-weight: bold;
   &:hover {
     color: $sidebar-panel-link-hover-color;
   }
@@ -61,22 +62,27 @@
   }
   div.search {
     margin-bottom: 20px;
-    padding: 8px;
-    border-radius: 4px;
-    background-color: $sidebar-search-bg-color;
+    background-color: transparent;
     input[type="text"] {
-      width: 85%;
+      width: calc(100% - 50px);
       float: left;
       margin-right: 10px;
-      background-color: transparent;
+      @include block-item();
       &:focus {
-        background-color: #fff;
-        @include gal-box-shadow($focus-box-shadow);
+        @include highlight-item();
+        @include input-breathe();
       }
     }
     button {
       float: left;
-      margin-top: 2px;
+      line-height: 1.7;
+    }
+    .btn-danger {
+      width: 40px;
+      @include block-item();
+      &:hover {
+        @include highlight-item();
+      }
     }
   }
 }
@@ -85,11 +91,11 @@
   padding: 20px 0;
   img.author-image {
     background-color: #fff;
-    border: 2px solid #fff;
+    border: $item-border;
     border-radius: 50%;
     &:hover {
       @include gal-transition($duration: .3s, $timing-function: ease);
-      @include gal-transform(rotate(360deg));
+      box-shadow: 0 0 60px 10px #c6c6c6;
     }
   }
   p.author-description {
@@ -103,7 +109,7 @@
   > a {
     &:hover, &:focus {
       text-decoration: none;
-      background-color: $red;
+      background-color: $sidebar-active-color;
       @include gal-transition($duration: .25s);
     }
   }
@@ -113,10 +119,10 @@
   > li.active {
     a {
       color: #fff;
-      background-color: $red;
+      background-color: $sidebar-active-color;
       &:hover, &:focus {
         color: #fff;
-        background-color: $red;
+        background-color: $sidebar-active-color;
       }
     }
   }
@@ -201,11 +207,6 @@ ul.pills-gal {
     z-index: 99;
     float: left;
     display: block;
-    @include gal-transition($duration: .3s, $timing-function: ease);
-    &:hover {
-      @include gal-transform(scale(1.25));
-      @include gal-transition($duration: .3s, $timing-function: ease);
-    }
   }
 
   .hint, [data-hint2] {

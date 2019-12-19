@@ -26,18 +26,8 @@
                     <% } %>
                 <div class="navbar-brand"></div>
                 <% } else { %>
-                <style>
-                    #gal-header .navbar-brand {
-                        height: 54px;
-                        line-height: 24px;
-                        font-size: 28px;
-                        opacity: 1;
-                        background-color: rgba(0,0,0,0);
-                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
-                    }
-                </style>
                 <!-- 这里使用文字(navbar_text or config.title) -->
-                <div class="navbar-brand"><%= theme.navbar_text ? theme.navbar_text : config.title %></div>
+                <div class="navbar-brand navbar-brand-text"><%= theme.navbar_text ? theme.navbar_text : config.title %></div>
                 <% } %>
             </a>
         </div>
@@ -83,9 +73,9 @@
                         </li>
                         <% }) %>
                         <% if(site.tags.length > m.dropdown) { %>
-                        <li>
+                        <!--li>
                             <a href="<%- url_for(m.url) %>">...</a>
-                        </li>
+                        </li-->
                         <% } %>
                         <% } %>
                     </ul>

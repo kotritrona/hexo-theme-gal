@@ -3,14 +3,10 @@
 
 header#gal-header {
   font-size: 14px;
-  border-radius: 0;
-  border-color: $nav-border-color;
-  background-color: $nav-inverse;
-  @include gal-box-shadow($nav-box-shadow);
+  background: none;
   & .navbar-toggle {
+    @include block-item();
     &:hover, &:focus {
-      background-color: #333;
-      outline: $nav-button-outline-color auto 5px;
     }
     .fa-reorder {
       color: #fff;
@@ -20,14 +16,28 @@ header#gal-header {
     & > li > a {
       color: #fff;
     }
+    & > li > a > i {
+      padding-right: 0.35em;
+    }
     & > li.current > a {
-      background-color: $purple;
+        color: #666666;
+        background-color: #c4c4c4;
     }
     & > li:not(.current) {
       & > a:hover, & > a:focus {
         @include gal-transition($duration: .25s);
-        background-color: $violet;
+        color: #666666;
+        background-color: #c4c4c4;
       }
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse > .navbar-nav {
+    @include block-item();
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
 }
