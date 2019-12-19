@@ -3,8 +3,6 @@
 @import "mixin";
 
 ::selection{
-  background: $red;
-  color: white;
 }
 
 html, body {
@@ -185,6 +183,10 @@ ul {
   overflow: auto;
   color: $alert-color;
   background-color: transparent;
+}
+
+.alert-gal .info {
+  color: $content-article-info-color;
 }
 
 .alert-info {
