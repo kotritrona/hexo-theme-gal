@@ -160,7 +160,7 @@
         > .info {
           @include gal-transition($duration:.35s);
           > p {
-            font-size: 18px;
+            font-size: 14px;
             position: relative;
             color: $content-article-info-color;
             text-align: left;

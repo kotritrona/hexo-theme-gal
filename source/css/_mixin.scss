@@ -3,7 +3,7 @@
   -moz-transition: $property $duration $timing-function;
   -ms-transition: $property $duration $timing-function;
   -o-transition: $property $duration $timing-function;
-  transition: $property $duration $timing-function;
+  transition: all $duration $timing-function;
 }
 
 @mixin gal-box-shadow($gal-box-shadow) {
@@ -29,7 +29,7 @@
 
 
 @mixin transition-bg() {
-  transition-property: background-color,color,box-shadow;
+  transition-property: all;
   transition-duration: 500ms;
   transition-timing-function: ease-in-out;
 }
